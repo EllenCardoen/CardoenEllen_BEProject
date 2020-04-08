@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BEProjectEllen.Models
+namespace BEProjectEllen.Core
 {
     public class UserChoice
     {

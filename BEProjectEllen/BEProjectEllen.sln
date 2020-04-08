@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BEProjectEllen.Models", "BEProjectEllen.Models\BEProjectEllen.Models.csproj", "{D0D476A6-5959-48F7-A3A0-42D7A3E1B5FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BEProjectEllen.Core", "BEProjectEllen.Models\BEProjectEllen.Core.csproj", "{D0D476A6-5959-48F7-A3A0-42D7A3E1B5FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BEProjectEllen.Web", "BEProjectEllen.Web\BEProjectEllen.Web.csproj", "{B998217E-0256-48B4-9703-4886B9CEFA3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BEProjectEllen.Web", "BEProjectEllen.Web\BEProjectEllen.Web.csproj", "{B998217E-0256-48B4-9703-4886B9CEFA3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

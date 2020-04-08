@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Web\\BEProjectEllen.Web.csproj": {}
+    "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Models\\BEProjectEllen.Core.csproj": {}
   },
   "projects": {
-    "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Web\\BEProjectEllen.Web.csproj": {
+    "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Models\\BEProjectEllen.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Web\\BEProjectEllen.Web.csproj",
-        "projectName": "BEProjectEllen.Web",
-        "projectPath": "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Web\\BEProjectEllen.Web.csproj",
+        "projectUniqueName": "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Models\\BEProjectEllen.Core.csproj",
+        "projectName": "BEProjectEllen.Core",
+        "projectPath": "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Models\\BEProjectEllen.Core.csproj",
         "packagesPath": "C:\\Users\\Hoofdgebruiker\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Web\\obj\\",
+        "outputPath": "D:\\Desktop\\School\\Backend\\CardoenEllen_BEProject\\BEProjectEllen\\BEProjectEllen.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -59,9 +59,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -1,0 +1,5 @@
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\bin\Debug\netcoreapp3.1\BEProjectEllen.Core.deps.json
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\bin\Debug\netcoreapp3.1\BEProjectEllen.Core.dll
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.csprojAssemblyReference.cache
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.AssemblyInfoInputs.cache
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.AssemblyInfo.cs
