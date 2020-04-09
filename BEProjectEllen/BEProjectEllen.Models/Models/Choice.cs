@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace BEProjectEllen.Core
@@ -12,5 +13,19 @@ namespace BEProjectEllen.Core
         public string ImageUrl { get; set; }
         public bool IsCorrect { get; set; }
         public string Explanation { get; set; }
+
+        // lookup - navigation property
+        public Question Question { get; set; }
+
+
+        // lookup - one to many
+        public virtual ICollection<UserChoice> UserChoices { get; set; }
+
+        public Choice()
+        {
+            UserChoices = new Collection<UserChoice>();
+        }
+
+
     }
 }

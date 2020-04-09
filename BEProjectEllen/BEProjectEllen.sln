@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BEProjectEllen.Core", "BEProjectEllen.Models\BEProjectEllen.Core.csproj", "{D0D476A6-5959-48F7-A3A0-42D7A3E1B5FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BEProjectEllen.Web", "BEProjectEllen.Web\BEProjectEllen.Web.csproj", "{B998217E-0256-48B4-9703-4886B9CEFA3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BEProjectEllen.Web", "BEProjectEllen.Web\BEProjectEllen.Web.csproj", "{256E4DEF-99A5-4085-B385-8F7BB314AD20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D0D476A6-5959-48F7-A3A0-42D7A3E1B5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0D476A6-5959-48F7-A3A0-42D7A3E1B5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0D476A6-5959-48F7-A3A0-42D7A3E1B5FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B998217E-0256-48B4-9703-4886B9CEFA3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B998217E-0256-48B4-9703-4886B9CEFA3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B998217E-0256-48B4-9703-4886B9CEFA3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B998217E-0256-48B4-9703-4886B9CEFA3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256E4DEF-99A5-4085-B385-8F7BB314AD20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256E4DEF-99A5-4085-B385-8F7BB314AD20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256E4DEF-99A5-4085-B385-8F7BB314AD20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256E4DEF-99A5-4085-B385-8F7BB314AD20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

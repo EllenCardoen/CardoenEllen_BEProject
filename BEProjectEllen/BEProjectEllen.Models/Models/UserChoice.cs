@@ -11,5 +11,8 @@ namespace BEProjectEllen.Core
         public int UserQuizId { get; set; }
         public int ChoiceId { get; set; }
 
+        // lookup - navigation property
+        public UserQuiz UserQuiz { get; set; }
+        public Choice Choice { get; set; }
     }
 }

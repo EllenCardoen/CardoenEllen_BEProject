@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BEProjectEllen.Core.Repositories
 {
@@ -15,6 +16,19 @@ namespace BEProjectEllen.Core.Repositories
             this._context = context;
         }
 
-
+        public async Task<UserChoice> AddUserChoice(UserChoice userChoice)
+        {
+            try
+            {
+                var result = _context.UserChoices.AddAsync(userChoice);
+                await _context.SaveChangesAsync();
+                return userChoice;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.InnerException.Message);
+                return null;
+            }
+        }
     }
 }

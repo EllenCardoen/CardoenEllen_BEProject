@@ -3,3 +3,8 @@ D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.M
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.csprojAssemblyReference.cache
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.AssemblyInfoInputs.cache
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.AssemblyInfo.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\bin\Debug\netcoreapp3.1\BEProjectEllen.Core.pdb
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.dll
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\obj\Debug\netcoreapp3.1\BEProjectEllen.Core.pdb
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\bin\Debug\netcoreapp3.1\BEProjectEllen.Core.runtimeconfig.json
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Models\bin\Debug\netcoreapp3.1\BEProjectEllen.Core.runtimeconfig.dev.json
