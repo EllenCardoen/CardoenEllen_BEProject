@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BEProjectEllen.Core.Repositories
 {
-    public class UserChoiceRepo
+    public class UserChoiceRepo : IUserChoiceRepo
     {
         //Add userchoice
         private readonly QuizDBContext _context;
@@ -24,7 +24,7 @@ namespace BEProjectEllen.Core.Repositories
                 await _context.SaveChangesAsync();
                 return userChoice;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException.Message);
                 return null;

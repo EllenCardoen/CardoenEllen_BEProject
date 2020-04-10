@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200408175923_Init.Designer.cs" />
     <Compile Remove="Migrations\20200408180100_CreateModels.cs" />
     <Compile Remove="Migrations\20200408180100_CreateModels.Designer.cs" />
+    <Compile Remove="Migrations\20200408191422_SeedData.cs" />
+    <Compile Remove="Migrations\20200408191422_SeedData.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.1" />
   </ItemGroup>
 
 </Project>

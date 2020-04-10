@@ -10,7 +10,7 @@ namespace BEProjectEllen.Core
         public int Id { get; set; }
         public  string Title { get; set; }
 
-        public string DifficultyId { get; set; }
+        public int DifficultyId { get; set; }
 
         // lookup - one to many
         public virtual ICollection<Question> Questions { get; set; }

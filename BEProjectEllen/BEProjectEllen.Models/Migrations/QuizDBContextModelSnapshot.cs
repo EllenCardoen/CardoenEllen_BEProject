@@ -121,10 +121,7 @@ namespace BEProjectEllen.Core.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DifficultyId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DifficultyId1")
+                    b.Property<int>("DifficultyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -132,7 +129,7 @@ namespace BEProjectEllen.Core.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DifficultyId1");
+                    b.HasIndex("DifficultyId");
 
                     b.ToTable("Quizzes");
                 });
@@ -209,15 +206,15 @@ namespace BEProjectEllen.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6a7fc18d-3442-4144-a737-e7e263842d1c",
-                            ConcurrencyStamp = "2f05d5f4-4ec0-40e6-a2b0-febeb57363d2",
+                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            ConcurrencyStamp = "90eeba1f-6bd0-4a00-9bc6-28680d314f0c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "10f32c2b-8158-492f-a6a6-5578bef05cb2",
-                            ConcurrencyStamp = "3b6222a3-f2a8-4068-827d-65b06803eda2",
+                            Id = "9a9a1a52-e08b-4042-b934-66cbbcbe7c77",
+                            ConcurrencyStamp = "ef3f244b-44ab-4289-a512-00df7c843f2a",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -314,35 +311,35 @@ namespace BEProjectEllen.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b163ed5f-6559-4dbb-ac82-1427bbc64fc6",
+                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d3c1259a-628f-41c6-85ae-7ebe63a2dc41",
+                            ConcurrencyStamp = "af2a5497-26d0-41be-9b0d-d973450c86c8",
                             Email = "ellen@student.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ELLEN@STUDENT.COM",
                             NormalizedUserName = "ELLENCARDOEN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAJOyEuCBEVptPmyzSNM05W4xckFO9LGpQppJuPc7vFn4FsE2ncDsyXZy4kIaGYA9A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK+WtAHpwJ0gkkHaXEAjCsIDUzH7cgDYUbZ/zs9mwBG8HZc73PNZj20/5TrOrS7Pzg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b421c753-0292-40de-9a0a-9ebc360c38f4",
+                            SecurityStamp = "2fc79102-4c7f-4f51-b72e-ae0a30bc562b",
                             TwoFactorEnabled = false,
                             UserName = "Ellen"
                         },
                         new
                         {
-                            Id = "da8a2cf5-bd2f-441c-aa86-0e4c8c4d8e7c",
+                            Id = "a18be9c0-aa65-4af8-bd17-15bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c4cfbdd6-36cd-4754-ab42-f9f5e2be34ba",
-                            Email = "johan@docent.com",
+                            ConcurrencyStamp = "ac6cf895-9c5c-42cd-b70b-38716c55694e",
+                            Email = "docent@MCT.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "JOHAN@DOCENT.COM",
-                            NormalizedUserName = "JOHANMCT",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPQPZcyMHqTU4J6Lrfg0xBty9YUFB5f8XLymRZhAa9pY1Fpq3yErJ5jZnV/wA7QpHQ==",
+                            NormalizedEmail = "DOCENT@MCT.COM",
+                            NormalizedUserName = "DOCENTMCT",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMnnj0zhghgF9lCY9cdVSCH7pxXE7PmLQxZMMxbu2wDnbEGFNUjw78KjoREchXwS9g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "86bdc4ff-f9f6-4a43-8693-c59284f54e0e",
+                            SecurityStamp = "239d5981-0d02-42a3-9d68-2ce6fc771626",
                             TwoFactorEnabled = false,
-                            UserName = "Johan"
+                            UserName = "Docent@MCT"
                         });
                 });
 
@@ -373,12 +370,10 @@ namespace BEProjectEllen.Core.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -407,6 +402,18 @@ namespace BEProjectEllen.Core.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                        },
+                        new
+                        {
+                            UserId = "a18be9c0-aa65-4af8-bd17-15bd9344e575",
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -415,12 +422,10 @@ namespace BEProjectEllen.Core.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -452,7 +457,9 @@ namespace BEProjectEllen.Core.Migrations
                 {
                     b.HasOne("BEProjectEllen.Core.Difficulty", "Difficulty")
                         .WithMany()
-                        .HasForeignKey("DifficultyId1");
+                        .HasForeignKey("DifficultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BEProjectEllen.Core.UserChoice", b =>

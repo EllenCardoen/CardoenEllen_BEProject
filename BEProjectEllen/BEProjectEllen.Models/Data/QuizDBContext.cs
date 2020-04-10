@@ -9,9 +9,10 @@ namespace BEProjectEllen.Core.Data
 {
     public class QuizDBContext : IdentityDbContext
     {
+        
         public QuizDBContext(DbContextOptions<QuizDBContext> options) : base(options)
         {
-                
+            
         }
 
         //Dbsets (kolommen in database)
@@ -23,6 +24,7 @@ namespace BEProjectEllen.Core.Data
         //veel op veel relaties
         public DbSet<UserChoice> UserChoices { get; set; }
         public DbSet<UserQuiz> UserQuizzes { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

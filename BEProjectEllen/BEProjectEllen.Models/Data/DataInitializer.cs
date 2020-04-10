@@ -11,38 +11,51 @@ namespace BEProjectEllen.Core.Data
     {
         // extention method
         public static void Seed(this ModelBuilder modelBuilder)
-        {
-            //TODO: roles toevoegen aan gebuikers, ellen en johan krijgen Admin role!!      
-                        
-            IdentityUser ellen = new IdentityUser
-            {
-                UserName = "Ellen",
-                Email = "ellen@student.com",
-                NormalizedEmail = "ellen@student.com".ToUpper(),
-                NormalizedUserName = "EllenCardoen".ToUpper(),
-                TwoFactorEnabled = false,
-                EmailConfirmed = true,
-                PhoneNumberConfirmed = false
-            };
+        {   
+            
+                // any guid
+                const string ELLENID = "a18be9c0-aa65-4af8-bd17-00bd9344e575";
+                const string DOCENTID = "a18be9c0-aa65-4af8-bd17-15bd9344e575";
+                // any guid, but nothing is against to use the same one
+                const string ROLE_ID = ELLENID;
 
-            IdentityUser johan = new IdentityUser
-            {
-                UserName = "Johan",
-                Email = "johan@docent.com",
-                NormalizedEmail = "johan@docent.com".ToUpper(),
-                NormalizedUserName = "JohanMCT".ToUpper(),
-                TwoFactorEnabled = false,
-                EmailConfirmed = true,
-                PhoneNumberConfirmed = false
-            };
+                IdentityUser ellen = new IdentityUser
+                {
+                    Id = ELLENID,
+                    UserName = "Ellen",
+                    Email = "ellen@student.com",
+                    NormalizedEmail = "ellen@student.com".ToUpper(),
+                    NormalizedUserName = "EllenCardoen".ToUpper(),
+                    TwoFactorEnabled = false,
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = false
+                };
+
+                IdentityUser docent = new IdentityUser
+                {
+                    Id=DOCENTID,
+                    UserName = "Docent@MCT",
+                    Email = "docent@MCT.com",
+                    NormalizedEmail = "docent@MCT.com".ToUpper(),
+                    NormalizedUserName = "DocentMCT".ToUpper(),
+                    TwoFactorEnabled = false,
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = false
+                };
+
+                PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
+                ellen.PasswordHash = ph.HashPassword(ellen, "ellen");
+                docent.PasswordHash = ph.HashPassword(docent, "Docent@1");
+
+               
+
+                modelBuilder.Entity<IdentityUser>().HasData(ellen);
+                modelBuilder.Entity<IdentityUser>().HasData(docent);
 
 
-            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
-            ellen.PasswordHash = ph.HashPassword(ellen, "ellen");
-            johan.PasswordHash = ph.HashPassword(johan, "docent");
 
             modelBuilder.Entity<IdentityRole>().HasData(
-                new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
+                new IdentityRole { Name = "Admin", NormalizedName = "ADMIN",Id = ROLE_ID },
                 new IdentityRole { Name = "User", NormalizedName = "USER" }
             );
 
@@ -53,8 +66,9 @@ namespace BEProjectEllen.Core.Data
                 new Difficulty { Id = 4, Level = "Challenging" }
             );
 
-            modelBuilder.Entity<IdentityUser>().HasData(ellen);
-            modelBuilder.Entity<IdentityUser>().HasData(johan);
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string> { RoleId = ROLE_ID, UserId = ELLENID },
+                new IdentityUserRole<string> { RoleId = ROLE_ID, UserId = DOCENTID });            
         }
     }
 }

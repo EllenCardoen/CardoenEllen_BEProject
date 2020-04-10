@@ -30,7 +30,8 @@ namespace BEProjectEllen.Web
             services.AddDbContext<QuizDBContext>(options => options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<QuizDBContext>();
 
             services.AddControllersWithViews();

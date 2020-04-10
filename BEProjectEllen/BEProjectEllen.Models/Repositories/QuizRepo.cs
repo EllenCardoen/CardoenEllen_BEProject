@@ -1,4 +1,5 @@
 ﻿using BEProjectEllen.Core.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BEProjectEllen.Core.Repositories
 {
-    public class QuizRepo
+    public class QuizRepo : IQuizRepo
     {
         private readonly QuizDBContext _context;
         public QuizRepo(QuizDBContext context)
@@ -15,7 +16,12 @@ namespace BEProjectEllen.Core.Repositories
             this._context = context;
         }
 
-        public async Task<Quiz> AddQuiz(Quiz quiz)
+        public async Task<IEnumerable<Quiz>> GetQuizzesAsync()
+        {
+            return await _context.Quizzes.ToListAsync();
+        }
+
+        public async Task<Quiz> AddQuizAsync(Quiz quiz)
         {
             try
             {
@@ -43,7 +49,7 @@ namespace BEProjectEllen.Core.Repositories
                 var result = _context.Quizzes.Remove(quiz);
                 await _context.SaveChangesAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
