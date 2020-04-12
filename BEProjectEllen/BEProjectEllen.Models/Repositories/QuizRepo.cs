@@ -8,58 +8,19 @@ using System.Threading.Tasks;
 
 namespace BEProjectEllen.Core.Repositories
 {
-    public class QuizRepo : IQuizRepo
+    public class QuizRepo : GenericRepo<Quiz>, IQuizRepo
     {
         private readonly QuizDBContext _context;
-        public QuizRepo(QuizDBContext context)
+        public QuizRepo(QuizDBContext context):base(context)
         {
             this._context = context;
         }
 
-        public async Task<IEnumerable<Quiz>> GetQuizzesAsync()
+        public override Task<Quiz> GetAsync(int Id)
         {
-            return await _context.Quizzes.ToListAsync();
+            return _context.Quizzes.Include(q => q.Questions).ThenInclude(q => q.Choices).SingleOrDefaultAsync(q => q.Id == Id);
         }
 
-        public async Task<Quiz> AddQuizAsync(Quiz quiz)
-        {
-            try
-            {
-                var result = _context.Quizzes.AddAsync(quiz);
-                await _context.SaveChangesAsync();
-                return quiz;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.InnerException.Message);
-                return null;
-            }
-        }
-
-        public async Task DeleteQuiz(int id)
-        {
-            try
-            {
-                Quiz quiz = await GetQuizWithIdAsync(id);
-                if (quiz == null)
-                {
-                    return;
-                }
-
-                var result = _context.Quizzes.Remove(quiz);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-        }
-
-        public async Task<Quiz> GetQuizWithIdAsync(int id)
-        {
-            Quiz quiz = await _context.Quizzes.FindAsync(id);
-            return quiz;
-        }
 
 
     }

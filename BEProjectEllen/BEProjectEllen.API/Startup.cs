@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using BEProjectEllen.Core.Data;
 using BEProjectEllen.Core.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -32,8 +33,12 @@ namespace BEProjectEllen.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // TODO: IoC container vullen met nieuwe repo's 
             services.AddScoped<IQuizRepo, QuizRepo>();
             services.AddScoped<IUserChoiceRepo, UserChoiceRepo>();
+            services.AddScoped<IChoiceRepo, ChoiceRepo>();
+            services.AddScoped<IQuestionRepo, QuestionRepo>();
 
 
             services.AddCors(options =>
@@ -46,11 +51,13 @@ namespace BEProjectEllen.API
                     .AllowCredentials();
                 })
             );
-
+            // TODO: Automapper implementeren (2dependencies)s
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddDbContext<QuizDBContext>(options => options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            //Title moet hetzelfde zijn als naam van de database!!!
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1.0", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -83,7 +90,6 @@ namespace BEProjectEllen.API
             app.UseSwaggerUI(c =>
             {
                 c.RoutePrefix = "swagger";
-                //c.SwaggerEndpoint("/api/swagger/v1.0/swagger.json", "ProjectBE_api v1.0");
                 c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "aspnet-BEProjectEllen.Web v1.0");
             });
 
