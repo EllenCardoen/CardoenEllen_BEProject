@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BEProjectEllen.Core.Data;
+using BEProjectEllen.Core.Repositories;
 
 namespace BEProjectEllen.Web
 {
@@ -27,6 +28,11 @@ namespace BEProjectEllen.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IQuizRepo, QuizRepo>();
+            services.AddScoped<IUserChoiceRepo, UserChoiceRepo>();
+            services.AddScoped<IChoiceRepo, ChoiceRepo>();
+            services.AddScoped<IQuestionRepo, QuestionRepo>();
+
             services.AddDbContext<QuizDBContext>(options => options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 

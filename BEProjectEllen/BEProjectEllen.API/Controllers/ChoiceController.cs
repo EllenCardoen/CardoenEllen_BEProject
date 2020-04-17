@@ -75,11 +75,13 @@ namespace BEProjectEllen.API.Controllers
         {
             try
             {
-                //1 map questionDTO naar question
+                //1 map ChoiceDTO naar choice
                 var mappedChoice = _mapper.Map<Choice>(choice);
 
                 if (mappedChoice == null)
+                {
                     return NotFound();
+                }
 
                 //  2. ADD TO REPO
                 _choiceRepo.Create(mappedChoice);
@@ -88,10 +90,10 @@ namespace BEProjectEllen.API.Controllers
                 await _choiceRepo.SaveAsync();
 
                 // 4. map to dto (niet save dto)
-
+                var choiceDTO = _mapper.Map<ChoiceDTO>(mappedChoice);
 
                 // 5 . return created at action
-                return Ok(mappedChoice);
+                return Ok(choiceDTO);
             }
             catch (Exception ex)
             {
@@ -106,16 +108,23 @@ namespace BEProjectEllen.API.Controllers
         {
             try
             {
-                var mappedChoice = _mapper.Map<Question>(choice);
+                if (choice.Id != id)
+                {
+                    return BadRequest();
+                }
 
-                var foundChoice = _choiceRepo.GetAsync(id);
+                var foundChoice = await _choiceRepo.GetAsync(id);
 
                 if (foundChoice == null)
+                {
                     return NotFound();
+                }
+
+                _mapper.Map(choice, foundChoice);
 
                 await _choiceRepo.SaveAsync();
 
-                return Ok(foundChoice);
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -130,6 +139,16 @@ namespace BEProjectEllen.API.Controllers
         {
             try
             {
+                var foundChoice = await _choiceRepo.GetAsync(id);
+
+                if (foundChoice == null)
+                    return NotFound();
+
+
+                _choiceRepo.Delete(foundChoice);
+
+                await _choiceRepo.SaveAsync();
+
                 return NoContent();
             }
             catch (Exception ex)

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BEProjectEllen.Core.Quiz>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+
+
+    <a asp-action="play" asp-route-id="@item.Id" class="card">
+
+        <div> @Html.DisplayFor(modelItem => item.Title)</div>
+
+        <div>@Html.DisplayFor(modelItem => item.Difficulty.Level)</div>
+
+    </a>
+
+}

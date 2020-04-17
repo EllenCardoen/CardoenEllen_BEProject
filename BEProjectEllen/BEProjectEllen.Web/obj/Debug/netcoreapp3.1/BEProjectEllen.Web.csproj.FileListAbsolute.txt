@@ -162,3 +162,7 @@ D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.W
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\BEProjectEllen.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\BEProjectEllen.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Index.cshtml.g.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Play.cshtml.g.cs

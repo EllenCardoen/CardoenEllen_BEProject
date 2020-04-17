@@ -87,11 +87,12 @@ namespace BEProjectEllen.API.Controllers
                 // 3 . savechanges async
                 await _questionRepo.SaveAsync();
 
-                // 4. map to dto (niet save dto)
 
+                // 4. map to dto (om object terug te sturen naar de front)
+                var questionDTO = _mapper.Map<QuestionDTO>(mappedQuestion);
 
                 // 5 . return created at action
-                return Ok(mappedQuestion);
+                return Ok(questionDTO);
             }
             catch (Exception ex)
             {
@@ -106,16 +107,21 @@ namespace BEProjectEllen.API.Controllers
         {
             try
             {
-                var mappedQuestion = _mapper.Map<Question>(question);
+                if (question.Id != id)
+                {
+                    return BadRequest();
+                }
 
-                var foundQuestion = _questionRepo.GetAsync(id);
+                var foundQuestion = await _questionRepo.GetAsync(id);
 
                 if (foundQuestion == null)
                     return NotFound();
 
+                _mapper.Map(question, foundQuestion);
+
                 await _questionRepo.SaveAsync();
 
-                return Ok(foundQuestion);
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -130,6 +136,16 @@ namespace BEProjectEllen.API.Controllers
         {
             try
             {
+                var foundQuestion = await _questionRepo.GetAsync(id);
+
+                if (foundQuestion == null)
+                    return NotFound();
+
+
+                _questionRepo.Delete(foundQuestion);
+
+                await _questionRepo.SaveAsync();
+
                 return NoContent();
             }
             catch (Exception ex)
