@@ -1,0 +1,64 @@
+﻿body {
+}
+
+.card {
+    width: 18rem;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    margin-top: 30px;
+
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: x-large;
+    color: white;
+}
+
+.c-create-quiz {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    align-content: center;
+    align-items: center;
+}
+
+.card-text {
+    display: flex;
+    justify-content: center;
+}
+
+.c-questions{
+
+}
+
+.c-question{
+
+}
+
+.c-questionTitle{
+
+}
+
+.c-questionImage{
+
+}
+
+.c-choices{
+
+}
+
+.c-radiobtn{
+
+}
+
+.c-choice{
+
+}
+
+.c-choiceImage{
+
+}

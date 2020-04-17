@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace BEProjectEllen.Core.Repositories
 {
-    public interface IChoiceRepo : IGenericRepo<Choice>
+    public interface IUserQuizRepo : IGenericRepo<UserQuiz>
     {
-        Task<IEnumerable<Choice>> GetCorrectChoiceByQuiz(int id);
+      
     }
 }

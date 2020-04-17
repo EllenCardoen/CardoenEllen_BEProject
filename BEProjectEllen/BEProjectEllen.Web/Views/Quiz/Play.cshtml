@@ -4,53 +4,48 @@
     ViewData["Title"] = "Play";
 }
 
-<h1>Play</h1>
-
 <div>
-    <h4>Quiz</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Difficulty)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Difficulty.Id)
-        </dd>
-    </dl>
 
-    <h2>Vragen</h2>
+    <h1>@Model.Title</h1>
 
-    <div class="c-quiz__vragen">
-        @foreach (var question in Model.Questions)
+    <form class="c-questions" asp-action="Play" method="post">
+        @for (int i = 0; i < Model.Questions.Count; i++)
         {
-            <div class="c-quiz__vraag">
-                <div class="c-quiz__vraag--titel">@question.Title: </div>
-                <div>@question.Description</div>
-                <div><img class="c-quiz__vraag--img" src="~/images/@question.ImageUrl" alt="afbeelding van @question.Title" /></div>
-                <div class="c-quiz__antwoorden">
-                    @foreach (var choice in question.Choices)
+            var question = Model.Questions.ToList()[i];
+      
+            <div class="c-question">
+                <div class="c-questionTitle">@question.Title</div>
+                <div>
+                    @if (question.ImageUrl != null)
                     {
-                        <input class="c-quiz__radiobtn" type="radio" name="vraag-@question.Id" value="@choice.Id" id="@choice.Id" />
-                        <label class="c-quiz__antwoord" for="@choice.Id">
-                            <span>@choice.Description</span>
-                            @if (choice.ImageUrl != null)
-                            {
-                                <img class="c-quiz__antwoord-img" src="~/images/@choice.ImageUrl" alt="afbeelding van @choice.Description" />
+                        <img class="c-questionImage" src="~/images/@question.ImageUrl" alt="Image of @question.Title" />
+                    }
+                </div>
+                <div class="c-choices">
 
-                            }
-                        </label>
+                   @foreach (var choice in question.Choices)
+                   {
+                         <ul>
+                            <li>
+                                <input type="radio" id="@choice.Id" value="@choice.Id" name="choices[@i]">
+                                <label for="@choice.Id">
+                                    <span>@choice.Description</span>
+                                    @if (choice.ImageUrl != null)
+                                    {
+                                        <img class="c-choiceImage" src="~/images/@choice.ImageUrl" alt="Image of @choice.Description" />
+                                    }
+                                </label>
+
+                                <div class="check"></div>
+                            </li>
+                         </ul>
                     }
                 </div>
             </div>
         }
-        <button>Antwoorden indienen</button>
-    </div>
+
+        <button type="submit">Submit</button>
+    </form>
 </div>
 <div>
     <a asp-action="Index">Back to List</a>

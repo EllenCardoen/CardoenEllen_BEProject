@@ -1,0 +1,39 @@
+﻿@model BEProjectEllen.Core.UserQuiz
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h1>Results</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var userChoice in Model.UserChoices)
+{
+    <div>@userChoice.Choice.Question.Title</div>
+    <div>@userChoice.Choice.Question.ScoreValue</div>
+    <div>@userChoice.Choice.Question.ImageUrl</div>
+
+    <hr />
+    <div class="@(userChoice.Choice.IsCorrect ? "c-choice" : "c-choice c-choice--incorrect") ">
+        <div>@userChoice.Choice.Description</div>
+        <div>@userChoice.Choice.ImageUrl</div>
+        <div>@userChoice.Choice.IsCorrect</div>
+
+    </div>
+
+}
+
+<style>
+    .c-choice {
+        //standaard styles
+
+            backgroundcolor : green;
+    }
+
+    .choice--incorrect{
+        background-color : red;
+    }
+</style>

@@ -1,25 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using BEProjectEllen.Core;
 using BEProjectEllen.Core.Repositories;
+using BEProjectEllen.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BEProjectEllen.Web.Controllers
 {
+    [Authorize]
     public class QuizController : Controller
     {
-        private readonly IQuizRepo _repo;
+        private readonly IQuizRepo _quizRepo;
+        private readonly IChoiceRepo _choiceRepo;
+        private readonly IQuizService _quizService;
+        private readonly IUserQuizRepo _userQuizRepo;
 
-        public QuizController(IQuizRepo repo)
+        public QuizController(IQuizRepo quizRepo, IChoiceRepo choiceRepo, IQuizService quizService, IUserQuizRepo userQuizRepo)
         {
-            _repo = repo;
+            _quizRepo = quizRepo;
+            _choiceRepo = choiceRepo;
+            _quizService = quizService;
+            _userQuizRepo = userQuizRepo;
         }
         public  async Task<IActionResult> Index()
         {
             try
             {
-                var quizzes = await _repo.GetAllAsync();
+                var quizzes = await _quizRepo.GetAllAsync();
 
                 return View(quizzes);
             }
@@ -35,7 +46,7 @@ namespace BEProjectEllen.Web.Controllers
         {
             try
             {
-                var quizzes = await _repo.GetAsync(id);
+                var quizzes = await _quizRepo.GetAsync(id);
 
                 return View(quizzes);
             }
@@ -45,6 +56,53 @@ namespace BEProjectEllen.Web.Controllers
                 throw;
             }
 
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Play(List<int> choices, int id)
+        {
+
+            try
+            {
+                var quizzes = await _quizRepo.GetAsync(id);
+
+
+                // Creat new UserQuiz
+                //  GET user ID
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (userId == null || quizzes == null)
+                    return View(quizzes);
+
+
+                // make user choice
+                if (choices.Count != quizzes.Questions.Count)
+                {
+                    // not all questions are filled in 
+                    ModelState.AddModelError("count", "Not alle choices where filled in. Please start again");
+                    return View(quizzes);
+                }
+
+                // TODO: place in service aub
+                UserQuiz userQuiz = await _quizService.SaveUserQuiz(choices, id, userId);
+
+                return RedirectToAction(nameof(Results), new { id = userQuiz.Id });
+            }
+            catch (Exception)
+            {
+                var quizzes = await _quizRepo.GetAsync(id);
+                return View(quizzes);
+
+            }
+        }
+
+        public async Task<IActionResult> Results(int id)
+        {
+            // 1. get list of user quiz . include answers . theninclude choices
+            var UserQuiz = await _userQuizRepo.GetAsync(id);
+            // 2. return
+            return View(UserQuiz);
         }
 
     }

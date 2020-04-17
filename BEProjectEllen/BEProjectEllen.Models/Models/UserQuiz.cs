@@ -18,8 +18,6 @@ namespace BEProjectEllen.Core
         public int EndScore { get; set; }
 
         
-
-        
         // lookup - navigation property
         public Quiz Quiz { get; set; }
 

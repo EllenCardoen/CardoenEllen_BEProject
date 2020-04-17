@@ -32,6 +32,12 @@ namespace BEProjectEllen.Core.Repositories
                .ToListAsync();
         }
 
+        public void AddUserQuiz(UserQuiz userQuiz)
+        {
+            _context.UserQuizzes.Add(userQuiz);
+               
+        }
+        
 
 
     }

@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BEProjectEllen.Core.Data;
 using BEProjectEllen.Core.Repositories;
+using BEProjectEllen.Core.Services;
 
 namespace BEProjectEllen.Web
 {
@@ -32,6 +33,10 @@ namespace BEProjectEllen.Web
             services.AddScoped<IUserChoiceRepo, UserChoiceRepo>();
             services.AddScoped<IChoiceRepo, ChoiceRepo>();
             services.AddScoped<IQuestionRepo, QuestionRepo>();
+            services.AddScoped<IUserQuizRepo, UserQuizRepo>();
+
+            services.AddScoped<IQuizService, QuizService>();
+
 
             services.AddDbContext<QuizDBContext>(options => options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

@@ -166,3 +166,4 @@ D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.W
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\BEProjectEllen.Web.MvcApplicationPartsAssemblyInfo.cache
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Index.cshtml.g.cs
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Play.cshtml.g.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Results.cshtml.g.cs
