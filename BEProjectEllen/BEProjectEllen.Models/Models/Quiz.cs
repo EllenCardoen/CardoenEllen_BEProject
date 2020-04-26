@@ -15,12 +15,14 @@ namespace BEProjectEllen.Core
         // lookup - one to many
         public virtual ICollection<Question> Questions { get; set; }
 
+        public virtual ICollection<UserQuiz> UserQuizzes { get; set; }
         // lookup - navigation property
         public Difficulty Difficulty { get; set; }
 
         public Quiz()
         {
             this.Questions = new Collection<Question>();
+            this.UserQuizzes = new Collection<UserQuiz>();
         }
 
     }

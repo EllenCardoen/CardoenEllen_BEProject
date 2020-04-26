@@ -16,7 +16,6 @@ namespace BEProjectEllen.Core
 
         //deze endscore wordt enkel op het einde van de quiz gevuld, waardoor we kunnen weten of de quiz is afgelopen of niet.
         public int EndScore { get; set; }
-
         
         // lookup - navigation property
         public Quiz Quiz { get; set; }

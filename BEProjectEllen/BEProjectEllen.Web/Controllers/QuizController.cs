@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using BEProjectEllen.Core;
 using BEProjectEllen.Core.Repositories;
 using BEProjectEllen.Core.Services;
+using BEProjectEllen.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BEProjectEllen.Web.Controllers
 {
@@ -26,20 +28,40 @@ namespace BEProjectEllen.Web.Controllers
             _quizService = quizService;
             _userQuizRepo = userQuizRepo;
         }
-        public  async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             try
             {
                 var quizzes = await _quizRepo.GetAllAsync();
+                var quizVMs = new List<QuizVM>();
+                foreach (var quiz in quizzes)
+                {
 
-                return View(quizzes);
+                    var quizid = quiz.Id;
+                    var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var foundUserQuiz = await _userQuizRepo.GetUserQuizByMaximumScore(quizid, userid);
+
+                    var quizVM = new QuizVM()
+                    {
+                        Quiz = quiz
+                    };
+                    
+                    if(foundUserQuiz != null)
+                    {
+                        quizVM.BestScore = foundUserQuiz.EndScore;
+                        quizVM.BestScoreDate = foundUserQuiz.Timestamp;
+                    }
+
+                    quizVMs.Add(quizVM);
+                }
+
+
+                return View(quizVMs);
             }
             catch (Exception)
             {
-
                 throw;
             }
-          
         }
 
         public async Task<IActionResult> Play(int id)
@@ -52,21 +74,17 @@ namespace BEProjectEllen.Web.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
 
 
         [HttpPost]
         public async Task<IActionResult> Play(List<int> choices, int id)
         {
-
             try
             {
                 var quizzes = await _quizRepo.GetAsync(id);
-
 
                 // Creat new UserQuiz
                 //  GET user ID
@@ -74,7 +92,6 @@ namespace BEProjectEllen.Web.Controllers
 
                 if (userId == null || quizzes == null)
                     return View(quizzes);
-
 
                 // make user choice
                 if (choices.Count != quizzes.Questions.Count)
@@ -93,7 +110,6 @@ namespace BEProjectEllen.Web.Controllers
             {
                 var quizzes = await _quizRepo.GetAsync(id);
                 return View(quizzes);
-
             }
         }
 

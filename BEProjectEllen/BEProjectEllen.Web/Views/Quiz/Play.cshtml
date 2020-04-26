@@ -32,11 +32,11 @@
                                     <span>@choice.Description</span>
                                     @if (choice.ImageUrl != null)
                                     {
-                                        <img class="c-choiceImage" src="~/images/@choice.ImageUrl" alt="Image of @choice.Description" />
+                                        <img class="c-choiceImage" src="@choice.ImageUrl" alt="Image of @choice.Description" />
                                     }
                                 </label>
 
-                                <div class="check"></div>
+                                <div class="check"><div class="inside"></div></div>
                             </li>
                          </ul>
                     }
@@ -44,7 +44,7 @@
             </div>
         }
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="c-submitBtn">Submit</button>
     </form>
 </div>
 <div>

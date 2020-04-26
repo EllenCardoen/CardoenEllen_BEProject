@@ -19,6 +19,7 @@
     "BEProjectEllen.Web": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "Quiz",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

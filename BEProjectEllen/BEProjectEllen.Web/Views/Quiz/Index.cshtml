@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BEProjectEllen.Core.Quiz>
+﻿@model IEnumerable<BEProjectEllen.Core.ViewModels.QuizVM>
 
 @{
     ViewData["Title"] = "Quizzes";
@@ -9,24 +9,22 @@
     {
 
 
-        <a asp-action="play" asp-route-id="@item.Id" class="card">
+        <a asp-action="play" asp-route-id="@item.Quiz.Id" class="card">
 
 
             <div>
-                <div class="card-title">@item.Title</div>
-                <p class="card-text">@item.Difficulty.Level</p>
+                <div class="card-title">@item.Quiz.Title</div>
+                <p class="card-text">@item.Quiz.Difficulty.Level</p>
+                <p class="card-text">@item.BestScoreDate</p>
+                <p class="card-text">Score: <p class="card-text">@item.BestScore</p></p>
+
             </div>
 
 
             @*<div> @Html.DisplayFor(modelItem => item.Title)</div>
 
-                <div>@Html.DisplayFor(modelItem => item.Difficulty.Level)</div>*@
+            <div>@Html.DisplayFor(modelItem => item.Difficulty.Level)</div>*@
 
         </a>
-
     }
-
-    <div class="card">
-        <a asp-action="Create" class="c-create-quiz">New Quiz</a>
-    </div>
 </div>

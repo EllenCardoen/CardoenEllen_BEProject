@@ -17,15 +17,32 @@ namespace BEProjectEllen.Core.Repositories
             _context = context;
         }
 
-        public override async Task<UserQuiz> GetAsync(int id)
+        //public  async Task<UserQuiz> GetAsync(int quizId, string userId)
+        //{
+        //    var test =  _context.UserQuizzes               
+        //        .Where(c => c.QuizId == quizId &&  userId == c.UserId);
+
+        //}
+
+        public async Task<UserQuiz> GetUserQuizByMaximumScore(int quizId, string userId)
         {
-            return await _context.UserQuizzes
-                .Include(c => c.UserChoices)
-                .ThenInclude(c => c.Choice)
-                .ThenInclude(c => c.Question)
-                .Include(c => c.Quiz)
-                .SingleOrDefaultAsync(c => c.Id == id)
-                ;
+            try
+            {
+
+          
+            var result = _context.UserQuizzes.AsQueryable();
+
+            result = result.Where(uq => uq.QuizId == quizId && uq.UserId == userId);
+            result = result.OrderByDescending(c => c.EndScore);
+
+            return await result.FirstOrDefaultAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
     }
