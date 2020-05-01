@@ -34,6 +34,7 @@ namespace BEProjectEllen.Web
             services.AddScoped<IChoiceRepo, ChoiceRepo>();
             services.AddScoped<IQuestionRepo, QuestionRepo>();
             services.AddScoped<IUserQuizRepo, UserQuizRepo>();
+            services.AddScoped<IDifficultyRepo, DifficultyRepo>();
 
             services.AddScoped<IQuizService, QuizService>();
 

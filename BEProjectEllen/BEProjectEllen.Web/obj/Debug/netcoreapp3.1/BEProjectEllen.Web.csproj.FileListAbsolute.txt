@@ -167,3 +167,6 @@ D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.W
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Index.cshtml.g.cs
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Play.cshtml.g.cs
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Results.cshtml.g.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\CreateQuiz.cshtml.g.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\HighScore.cshtml.g.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\HighScore\Default.cshtml.g.cs

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BEProjectEllen.Core
@@ -12,6 +13,8 @@ namespace BEProjectEllen.Core
         public int Id { get; set; }
         public  int QuizId { get; set; }
         public string UserId { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Timestamp { get; set; }
 
         //deze endscore wordt enkel op het einde van de quiz gevuld, waardoor we kunnen weten of de quiz is afgelopen of niet.

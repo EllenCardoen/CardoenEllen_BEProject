@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using BEProjectEllen.Core.Services;
 using BEProjectEllen.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 
 namespace BEProjectEllen.Web.Controllers
@@ -20,14 +22,17 @@ namespace BEProjectEllen.Web.Controllers
         private readonly IChoiceRepo _choiceRepo;
         private readonly IQuizService _quizService;
         private readonly IUserQuizRepo _userQuizRepo;
+        private readonly IDifficultyRepo _difficultyRepo;
 
-        public QuizController(IQuizRepo quizRepo, IChoiceRepo choiceRepo, IQuizService quizService, IUserQuizRepo userQuizRepo)
+        public QuizController(IQuizRepo quizRepo, IChoiceRepo choiceRepo, IQuizService quizService, IUserQuizRepo userQuizRepo,IDifficultyRepo difficultyRepo)
         {
             _quizRepo = quizRepo;
             _choiceRepo = choiceRepo;
             _quizService = quizService;
             _userQuizRepo = userQuizRepo;
+            _difficultyRepo = difficultyRepo;
         }
+
         public async Task<IActionResult> Index()
         {
             try
@@ -61,6 +66,32 @@ namespace BEProjectEllen.Web.Controllers
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public async Task<IActionResult> CreateQuiz()
+        {
+            var quiz = new Quiz();
+            
+
+            var difficulties = await _difficultyRepo.GetAllAsync();
+            ViewBag.DifficultyId = new SelectList(difficulties,"Id","Level");
+            return View(quiz);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateQuiz(Quiz quiz)
+        {
+            try
+            {
+                _quizRepo.Create(quiz);
+                await _quizRepo.SaveAsync();
+
+                return View(quiz);
+            }
+            catch (Exception)
+            {
+                return View(quiz);
             }
         }
 
@@ -117,9 +148,23 @@ namespace BEProjectEllen.Web.Controllers
         {
             // 1. get list of user quiz . include answers . theninclude choices
             var UserQuiz = await _userQuizRepo.GetAsync(id);
+
             // 2. return
             return View(UserQuiz);
+
+            //dynamic mymodel = new ExpandoObject();
+            //mymodel.Result = await _userQuizRepo.GetAsync(id);
+            //mymodel.HighScore = await _userQuizRepo.GetHighScore(10, id);
+            //return View(mymodel);
         }
 
+        public async Task<IActionResult> HighScore(int id)
+        {
+            //var userQuiz = await _userQuizRepo.GetHighScore(10, id);
+
+            //return View(userQuiz);
+
+            return ViewComponent("HighScore", new { Quizid = id });
+        }
     }
 }

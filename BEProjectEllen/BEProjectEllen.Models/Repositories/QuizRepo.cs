@@ -22,7 +22,6 @@ namespace BEProjectEllen.Core.Repositories
                 .Include(q => q.Questions).ThenInclude(q => q.Choices)
                 .Include(q => q.Difficulty)
                 .SingleOrDefaultAsync(q => q.Id == Id);
-
         }
 
         public override async Task<IEnumerable<Quiz>> GetAllAsync()
@@ -35,7 +34,6 @@ namespace BEProjectEllen.Core.Repositories
         public void AddUserQuiz(UserQuiz userQuiz)
         {
             _context.UserQuizzes.Add(userQuiz);
-               
         }
         
 

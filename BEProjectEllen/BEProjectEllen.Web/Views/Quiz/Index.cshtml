@@ -15,15 +15,22 @@
             <div>
                 <div class="card-title">@item.Quiz.Title</div>
                 <p class="card-text">@item.Quiz.Difficulty.Level</p>
-                <p class="card-text">@item.BestScoreDate</p>
-                <p class="card-text">Score: <p class="card-text">@item.BestScore</p></p>
-
+                @if (item.BestScoreDate != null)
+                {
+                    <div class="c-best-score">
+                        <div class="c-score">
+                            <p class="card-text">Highscore:&nbsp;&nbsp;</p>
+                            <p class="card-text">@item.BestScore</p>
+                        </div>
+                        <p class="card-text">@item.BestScoreDate.Value.ToShortDateString()</p>
+                    </div>
+                }
             </div>
 
 
             @*<div> @Html.DisplayFor(modelItem => item.Title)</div>
 
-            <div>@Html.DisplayFor(modelItem => item.Difficulty.Level)</div>*@
+                <div>@Html.DisplayFor(modelItem => item.Difficulty.Level)</div>*@
 
         </a>
     }

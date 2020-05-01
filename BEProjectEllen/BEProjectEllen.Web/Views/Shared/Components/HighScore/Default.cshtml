@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BEProjectEllen.Core.UserQuiz>
+
+
+@{
+    var list = Model.ToList();
+
+    <div class="c-scoreboard">
+        <div class="c-cups">
+            <div class="c-cup">
+                <img src="~/Images/silver-cup.png" class="c-cup__item" />
+                <div>@list[1].User.Email.Split("@")[0]</div>
+            </div>
+            <div class="c-cup">
+                <img src="~/Images/gold-cup.png" class="c-cup__item c-cup__item--gold " />
+                <div>@list[0].User.Email.Split("@")[0]</div>
+            </div>
+            <div class="c-cup">
+                <img src="~/Images/bronze-cup.png" class="c-cup__item" />
+                <div>@list[2].User.Email.Split("@")[0]</div>
+            </div>
+        </div>
+
+        <div class="c-highscore-entries">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">DATE</th>
+                        <th scope="col">SCORE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    @for (int i = 3; i < list.Count; i++)
+                    {
+                    <tr>
+                        <th >@(i+1)</th>
+                        <td> @list[i].User.UserName.Split("@")[0]</td>
+                        <td>  @list[i].Timestamp</td>
+                        <td>@list[i].EndScore</td>
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
+
+
+
+
+            @*<ul>
+            <li class="c-highscore-record">
+                <ul class="c-highscore-record-ul">
+
+                    <li class="c-highscores-box-li">
+                        EMAIL
+                    </li>
+                    <li class="c-highscores-box-li">
+                        DATE
+                    </li>
+                    <li class="c-highscores-box-li">
+                        SCORE
+                    </li>
+
+                </ul>
+                <br />
+            </li>
+            @for (int i = 3; i < list.Count; i++)
+            {
+                <li class="c-highscore-record">
+                    <ul class="c-highscore-record-ul">
+
+                        <li class="c-highscores-box-li">
+                            @list[i].User.UserName.Split("@")[0]
+                        </li>
+                        <li class="c-highscores-box-li">
+                            @list[i].Timestamp
+                        </li>
+                        <li class="c-highscores-box-li">
+                            @list[i].EndScore
+                        </li>
+
+                    </ul>
+                    <br />
+                </li>
+            }
+        </ul>*@
+
+        </div>
+
+    </div>
+}
+
+      

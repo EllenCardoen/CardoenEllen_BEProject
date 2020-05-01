@@ -7,9 +7,6 @@ namespace BEProjectEllen.Core
     public class Difficulty
     {
         public int Id { get; set; }
-
         public string Level { get; set; }
-
-
     }
 }

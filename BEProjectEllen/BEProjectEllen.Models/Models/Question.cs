@@ -20,7 +20,6 @@ namespace BEProjectEllen.Core
         // lookup - navigation property
         public Quiz Quiz { get; set; }
 
-
         public Question()
         {
             this.Choices = new Collection<Choice>();

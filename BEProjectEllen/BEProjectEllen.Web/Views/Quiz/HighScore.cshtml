@@ -1,0 +1,19 @@
+﻿@model IEnumerable<BEProjectEllen.Core.UserQuiz>
+@{
+    ViewData["Title"] = "HighScore";
+}
+
+<h1>HighScore</h1>
+
+@foreach (var item in Model)
+{
+    <div>
+        @item.User.UserName
+    </div>
+    <div>
+        @item.Timestamp
+    </div>
+    <div>
+        @item.EndScore
+    </div>
+}
