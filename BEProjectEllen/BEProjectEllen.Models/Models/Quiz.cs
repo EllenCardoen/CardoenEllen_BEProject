@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BEProjectEllen.Core
@@ -8,8 +9,11 @@ namespace BEProjectEllen.Core
     public class Quiz
     {
         public int Id { get; set; }
+
+        [Required]
         public  string Title { get; set; }
 
+        [Required]
         public int DifficultyId { get; set; }
 
         // lookup - one to many

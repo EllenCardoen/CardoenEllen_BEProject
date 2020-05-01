@@ -4,14 +4,16 @@ using BEProjectEllen.Core.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BEProjectEllen.Core.Migrations
 {
     [DbContext(typeof(QuizDBContext))]
-    partial class QuizDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200501190017_DataAttributes")]
+    partial class DataAttributes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,14 +214,14 @@ namespace BEProjectEllen.Core.Migrations
                         new
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "31954e6b-4691-45dd-bd2c-df2d744a180c",
+                            ConcurrencyStamp = "1d92bb00-36a3-4f43-aec5-0dad72158046",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a18be9c0-aa65-4af8-bd17-15bd9344e575",
-                            ConcurrencyStamp = "1fd6003d-f2de-4e77-bdd1-ea13b7b5d313",
+                            Id = "9479975f-4b64-40eb-889f-817402c3a8d2",
+                            ConcurrencyStamp = "d988fa3d-9371-4275-9fe5-6af7a5b637e7",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -312,6 +314,40 @@ namespace BEProjectEllen.Core.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "cf25dd30-6bca-4620-bcb8-85e334b5f661",
+                            Email = "ellen@student.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ELLEN@STUDENT.COM",
+                            NormalizedUserName = "ELLENCARDOEN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL5WVo8RFlwmbCJwILL8eJlai/ZPwlVmQrjXKwqefXldDPcJ23/NUSwSutDrwDpagw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a67fe110-2812-4ec9-9b22-9080ea29f71a",
+                            TwoFactorEnabled = false,
+                            UserName = "Ellen"
+                        },
+                        new
+                        {
+                            Id = "a18be9c0-aa65-4af8-bd17-15bd9344e575",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "baf69a04-de97-40c8-bcd8-9368d335deaf",
+                            Email = "docent@MCT.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "DOCENT@MCT.COM",
+                            NormalizedUserName = "DOCENTMCT",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP+PF0wAgRn2vdkyC3RMTH9Oar2f6fj+6k5o88u0ybxIxt/bw9Nopn1zc3OUoH5RoA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ef9776a2-01bc-469a-b0d6-6f2782f25e5b",
+                            TwoFactorEnabled = false,
+                            UserName = "Docent@MCT"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -375,6 +411,18 @@ namespace BEProjectEllen.Core.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                        },
+                        new
+                        {
+                            UserId = "a18be9c0-aa65-4af8-bd17-15bd9344e575",
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

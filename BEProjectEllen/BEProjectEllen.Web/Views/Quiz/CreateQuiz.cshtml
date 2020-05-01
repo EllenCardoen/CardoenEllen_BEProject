@@ -11,8 +11,8 @@
         <form asp-action="CreateQuiz">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group c-group-size">
-                <label class="control-label">Quiz Title</label>
-                <input asp-for="Title" class="form-control form-control-large" />
+                <label class="control-label">Quiz Name</label>
+                <input asp-for="Title" class="form-control form-control-large" placeholder="Quiz name" />
 
                 <span asp-validation-for="Title" class="text-danger"></span>
 
@@ -22,29 +22,35 @@
                 <select asp-for="DifficultyId" class="form-control form-control-large" asp-items="ViewBag.DifficultyId"></select>
             </div>
 
-            @for (int i = 0; i < 10; i++)
+            @for (int i = 0; i < 5; i++)
             {
-                <div class="form-group">
-                    <label for="question[@i]-title" class="control-label">Question</label>
-                    <input name="Questions[@i].Title" id="question[@i]-title" class="form-control form-control-large" placeholder="Question" />
+
+                <hr class="c-hr" />
+
+                <div class="form-group c-question-score">
+                    <label for="question[@i]-title" class="control-label"></label>
+                    <input name="Questions[@i].Title" id="question[@i]-title" class="form-control form-control-large" placeholder="QUESTION" />
+
+                    <label for="question[@i]-score" class="control-label"></label>
+                    <input name="Questions[@i].Score" id="question[@i]-score" class="form-control c-field-score" placeholder="Question score" />
                 </div>
 
                 <div class="form-group">
                     <label for="question[@i]-ImageUrl" class="control-label"></label>
-                    <input name="Questions[@i].ImageUrl" id="question[@i]-ImageUrl" class="form-control form-control-large" placeholder="Optional question" />
+                    <input name="Questions[@i].ImageUrl" id="question[@i]-ImageUrl" class="form-control form-control-large" placeholder="Optional questionUrl" />
                 </div>
 
-                <div class="form-group">
+                @*<div class="form-group">
                     <label for="question[@i]-score" class="control-label">Score for question</label>
                     <input name="Questions[@i].Score" id="question[@i]-score" class="form-control form-control-large" placeholder="Score" />
-                </div>
+                </div>*@
 
                 <div class="c-form-choices">
                     @for (int y = 0; y < 4; y++)
                     {
                         <div class="form-group c-form-choices">
                             <label for="questions-@i-choice-@y" class="control-label"></label>
-                            <input name="Questions[@i].Choices[@y].Description" id="questions-@i-choice-@y" class="form-control" value="Answer" />
+                            <input name="Questions[@i].Choices[@y].Description" id="questions-@i-choice-@y" class="form-control" placeholder="Answer" />
                         </div>
                     }
                 </div>
@@ -54,7 +60,7 @@
                     {
                         <div class="form-group c-form-choices">
                             <label for="choice-@i-choice-@y" class="control-label"></label>
-                            <input name="Questions[@i].Choices[@y].ImageUrl" id="questions-@i-choice-@y" class="form-control" value="Optional ImageUrl" />
+                            <input name="Questions[@i].Choices[@y].ImageUrl" id="questions-@i-choice-@y" class="form-control" placeholder="Optional ImageUrl" />
                         </div>
                     }
                 </div>

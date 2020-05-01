@@ -87,7 +87,8 @@ namespace BEProjectEllen.Web.Controllers
                 _quizRepo.Create(quiz);
                 await _quizRepo.SaveAsync();
 
-                return View(quiz);
+                //return View(quiz);
+                return RedirectToAction(nameof(Index));
             }
             catch (Exception)
             {
