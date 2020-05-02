@@ -6,12 +6,14 @@ using AutoMapper;
 using BEProjectEllen.API.DataTransferObjects;
 using BEProjectEllen.Core;
 using BEProjectEllen.Core.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace BEProjectEllen.API.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     [Route("api/[controller]")]
     [ApiController]
     public class ChoiceController : ControllerBase

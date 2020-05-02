@@ -38,7 +38,6 @@ namespace BEProjectEllen.Web
 
             services.AddScoped<IQuizService, QuizService>();
 
-
             services.AddDbContext<QuizDBContext>(options => options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
@@ -64,6 +63,15 @@ namespace BEProjectEllen.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors(cfg =>
+            {
+                cfg.WithOrigins("https://localhost:5001")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                .AllowCredentials();
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

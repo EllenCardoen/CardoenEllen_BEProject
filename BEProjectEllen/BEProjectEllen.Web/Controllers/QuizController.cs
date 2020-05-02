@@ -8,6 +8,7 @@ using BEProjectEllen.Core;
 using BEProjectEllen.Core.Repositories;
 using BEProjectEllen.Core.Services;
 using BEProjectEllen.Core.ViewModels;
+using BEProjectEllen.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,14 +24,16 @@ namespace BEProjectEllen.Web.Controllers
         private readonly IQuizService _quizService;
         private readonly IUserQuizRepo _userQuizRepo;
         private readonly IDifficultyRepo _difficultyRepo;
+        private readonly ILogger<QuizController> _logger;
 
-        public QuizController(IQuizRepo quizRepo, IChoiceRepo choiceRepo, IQuizService quizService, IUserQuizRepo userQuizRepo,IDifficultyRepo difficultyRepo)
+        public QuizController(IQuizRepo quizRepo, IChoiceRepo choiceRepo, IQuizService quizService, IUserQuizRepo userQuizRepo, IDifficultyRepo difficultyRepo, ILogger<QuizController> logger)
         {
             _quizRepo = quizRepo;
             _choiceRepo = choiceRepo;
             _quizService = quizService;
             _userQuizRepo = userQuizRepo;
             _difficultyRepo = difficultyRepo;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
@@ -50,8 +53,8 @@ namespace BEProjectEllen.Web.Controllers
                     {
                         Quiz = quiz
                     };
-                    
-                    if(foundUserQuiz != null)
+
+                    if (foundUserQuiz != null)
                     {
                         quizVM.BestScore = foundUserQuiz.EndScore;
                         quizVM.BestScoreDate = foundUserQuiz.Timestamp;
@@ -63,36 +66,49 @@ namespace BEProjectEllen.Web.Controllers
 
                 return View(quizVMs);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                _logger.LogError(ex.Message);
+                return View("Error", new ErrorViewModel() { RequestId = HttpContext.TraceIdentifier });
             }
         }
 
         public async Task<IActionResult> CreateQuiz()
         {
             var quiz = new Quiz();
-            
 
-            var difficulties = await _difficultyRepo.GetAllAsync();
-            ViewBag.DifficultyId = new SelectList(difficulties,"Id","Level");
+
+            List<Difficulty> diffList = new List<Difficulty>();
+            diffList.Insert(0, new Difficulty { Level = "--- Choose difficulty level ---" });
+            diffList.AddRange(await _difficultyRepo.GetAllAsync());
+            ViewBag.DifficultyId = new SelectList(diffList, "Id", "Level");
+
+            //var difficulties = await _difficultyRepo.GetAllAsync();
+            //ViewBag.DifficultyId = new SelectList(difficulties,"Id","Level");
+
             return View(quiz);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateQuiz(Quiz quiz)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateQuiz([Bind("Title,DifficultyId,Questions")] Quiz quiz)
         {
             try
             {
+                if (quiz.DifficultyId == 0)
+                {
+                    quiz.DifficultyId = 1;
+                }
                 _quizRepo.Create(quiz);
                 await _quizRepo.SaveAsync();
 
                 //return View(quiz);
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return View(quiz);
+                _logger.LogError(ex.Message);
+                return View("Error", new ErrorViewModel() { RequestId = HttpContext.TraceIdentifier });
             }
         }
 
@@ -104,9 +120,10 @@ namespace BEProjectEllen.Web.Controllers
 
                 return View(quizzes);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                _logger.LogError(ex.Message);
+                return View("Error", new ErrorViewModel() { RequestId = HttpContext.TraceIdentifier });
             }
         }
 
@@ -133,39 +150,50 @@ namespace BEProjectEllen.Web.Controllers
                     return View(quizzes);
                 }
 
-                // TODO: place in service aub
                 UserQuiz userQuiz = await _quizService.SaveUserQuiz(choices, id, userId);
-
+                _logger.LogInformation($"Quiz completed by {User.Identity.Name}");
                 return RedirectToAction(nameof(Results), new { id = userQuiz.Id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                var quizzes = await _quizRepo.GetAsync(id);
-                return View(quizzes);
+                _logger.LogError(ex.Message);
+                return View("Error", new ErrorViewModel() { RequestId = HttpContext.TraceIdentifier });
             }
         }
 
         public async Task<IActionResult> Results(int id)
         {
-            // 1. get list of user quiz . include answers . theninclude choices
-            var UserQuiz = await _userQuizRepo.GetAsync(id);
+            try
+            {
+                // 1. get list of user quiz . include answers . theninclude choices
+                var UserQuiz = await _userQuizRepo.GetAsync(id);
 
-            // 2. return
-            return View(UserQuiz);
-
-            //dynamic mymodel = new ExpandoObject();
-            //mymodel.Result = await _userQuizRepo.GetAsync(id);
-            //mymodel.HighScore = await _userQuizRepo.GetHighScore(10, id);
-            //return View(mymodel);
+                // 2. return
+                return View(UserQuiz);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return View("Error", new ErrorViewModel() { RequestId = HttpContext.TraceIdentifier });
+                
+            }
         }
 
         public async Task<IActionResult> HighScore(int id)
         {
-            //var userQuiz = await _userQuizRepo.GetHighScore(10, id);
+            try
+            {
+                return ViewComponent("HighScore", new { Quizid = id });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return View("Error", new ErrorViewModel() { RequestId = HttpContext.TraceIdentifier });
+            }
 
-            //return View(userQuiz);
 
-            return ViewComponent("HighScore", new { Quizid = id });
         }
+
+        
     }
 }

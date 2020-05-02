@@ -6,12 +6,14 @@ using AutoMapper;
 using BEProjectEllen.API.DataTransferObjects;
 using BEProjectEllen.Core;
 using BEProjectEllen.Core.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace BEProjectEllen.API.Controllers
 {
+    [Authorize(Roles ="Administrator")]
     [Route("api/[controller]")]
     [ApiController]
     public class QuizController : ControllerBase
@@ -28,6 +30,7 @@ namespace BEProjectEllen.API.Controllers
         }
 
         // GET: api/Quiz
+        [Authorize(Roles ="User,Administrator")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -46,6 +49,7 @@ namespace BEProjectEllen.API.Controllers
             }
         }
 
+        [Authorize(Roles = "User,Administrator")]
         // GET: api/Quiz/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

@@ -171,3 +171,8 @@ D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.W
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\HighScore.cshtml.g.cs
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\HighScore\Default.cshtml.g.cs
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_QuizCardsPartial.cshtml.g.cs
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
