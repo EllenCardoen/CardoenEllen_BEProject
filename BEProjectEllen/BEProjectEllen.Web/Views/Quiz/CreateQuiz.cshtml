@@ -8,7 +8,7 @@
     <h1 class="c-title">CreateQuiz</h1>
 
     <div class="c-form">
-        <form asp-action="CreateQuiz">
+        <form asp-action="CreateQuiz" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group c-group-size">
                 <label class="control-label">Quiz Name</label>
@@ -22,49 +22,11 @@
                 <select asp-for="DifficultyId" class="form-control form-control-large" asp-items="ViewBag.DifficultyId"></select>
             </div>
 
-            @for (int i = 0; i < 5; i++)
-            {
+            <div class="question-js"></div>
 
-                <hr class="c-hr" />
+            <button class="btn btn-success c-addQuestionBtn" id="QuestionButton-js" type="button">Add new question</button>
+            
 
-                <div class="form-group c-question-score">
-                    <label for="question[@i]-title" class="control-label"></label>
-                    <input name="Questions[@i].Title" id="question[@i]-title" class="form-control form-control-large" placeholder="QUESTION" />
-
-                    <label for="question[@i]-score" class="control-label"></label>
-                    <input name="Questions[@i].Score" id="question[@i]-score" class="form-control c-field-score" placeholder="Question score" />
-                </div>
-
-                <div class="form-group">
-                    <label for="question[@i]-ImageUrl" class="control-label"></label>
-                    <input name="Questions[@i].ImageUrl" id="question[@i]-ImageUrl" class="form-control form-control-large" placeholder="Optional questionUrl" />
-                </div>
-
-                @*<div class="form-group">
-                    <label for="question[@i]-score" class="control-label">Score for question</label>
-                    <input name="Questions[@i].Score" id="question[@i]-score" class="form-control form-control-large" placeholder="Score" />
-                </div>*@
-
-                <div class="c-form-choices">
-                    @for (int y = 0; y < 4; y++)
-                    {
-                        <div class="form-group c-form-choices">
-                            <label for="questions-@i-choice-@y" class="control-label"></label>
-                            <input name="Questions[@i].Choices[@y].Description" id="questions-@i-choice-@y" class="form-control" placeholder="Answer" />
-                        </div>
-                    }
-                </div>
-
-                <div class="c-form-choices">
-                    @for (int y = 0; y < 4; y++)
-                    {
-                        <div class="form-group c-form-choices">
-                            <label for="choice-@i-choice-@y" class="control-label"></label>
-                            <input name="Questions[@i].Choices[@y].ImageUrl" id="questions-@i-choice-@y" class="form-control" placeholder="Optional ImageUrl" />
-                        </div>
-                    }
-                </div>
-            }
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -78,4 +40,77 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+        var btnAddQuestion = document.getElementById("QuestionButton-js");
+        var questionCounter = 0;
+        var questionContainer = document.querySelector(".question-js");
+
+        if (questionContainer)
+            addQuestion();
+        btnAddQuestion.addEventListener("click", addQuestion)
+
+        function addQuestion() {
+            var question = `
+
+                    <hr class="c-hr" />
+
+                    <div class="form-group c-question-score">
+                        <label for="question${questionCounter}-title" class="control-label"></label>
+                        <input name="Questions[${questionCounter}].Title" id="question[${questionCounter}]-title" class="form-control " placeholder="QUESTION" />
+
+                        <label for="question[${questionCounter}]-score" class="control-label"></label>
+                        <input type="number" name="Questions[${questionCounter}].Score" id="question[${questionCounter}]-score" class="form-control form-control-large c-field-score" placeholder="Question score" />
+                    </div>
+
+                    <div class="c-isCorrect">
+                        <div class="form-group">
+                            <label for="question[${questionCounter}]-ImageUrl" class="control-label"></label>
+                            <input name="Questions[${questionCounter}].ImageUrl" id="question[${questionCounter}]-ImageUrl" class="form-control form-control-large" placeholder="Optional questionUrl" />
+                        </div>
+                        <div> isCorrect? </div>
+                    </div>
+                    ${addAnswer(0)}
+                    ${addAnswer(1)}
+                    ${addAnswer(2)}
+                    ${addAnswer(3)}
+                            `
+
+            const divQuestion = document.createElement("div");
+            divQuestion.innerHTML = question;
+            questionContainer.appendChild(divQuestion);
+            questionCounter++;
+
+
+        }
+
+
+        function addAnswer(answerCounter) {
+
+            const answer = `
+                            <div class="c-form-choices">
+
+                                <div class="form-group c-form-choices">
+                                    <label for="questions-${questionCounter}-choice-${answerCounter}-Description" class="control-label"></label>
+                                    <input name="Questions[${questionCounter}].Choices[${answerCounter}].Description" id="questions-${questionCounter}-choice-${answerCounter}-Description" class="form-control" placeholder="Answer" />
+                                </div>
+
+                                <div class="form-group c-form-choices">
+                                    <label for="questions-${questionCounter}-choice-${answerCounter}" class="control-label"></label>
+                                    <input name="Questions[${questionCounter}].Choices[${answerCounter}].ImageUrl" id="questions-${questionCounter}-choice-${answerCounter}-ImageUrl" class="form-control" placeholder="Optional ImageUrl" />
+                                </div>
+
+                                <div>
+                                    <label for="questions-${questionCounter}-isCorrect-${answerCounter}" class="control-label"> </label>
+                                    <input type="checkbox" name="Questions[${questionCounter}].Choices[${answerCounter}].IsCorrect" value="true" id="questions-${questionCounter}-isCorrect-${answerCounter}" class="form-check-input" />
+                                </div>
+
+                                
+                            </div>
+                            `
+            return answer;
+        }
+
+    </script>
 }

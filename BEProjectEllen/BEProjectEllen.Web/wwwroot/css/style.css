@@ -230,10 +230,22 @@ input[type=radio]:checked ~ label {
     align-items: center;
 }
 
+.c-isCorrect {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c-addQuestionBtn{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 .c-scoreboard {
     border: solid rgb(181, 137, 0) 3px;
     border-radius: 12px;
     width: 75%;
+    margin: 2rem;
 }
 
 .c-highscore-entries {
