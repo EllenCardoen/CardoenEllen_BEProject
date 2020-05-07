@@ -29,7 +29,6 @@ namespace BEProjectEllen.API.Mapping
 
 
 
-
             // api DTO --> domain class
             CreateMap<SaveQuizDTO, Quiz>()
               .ForMember(dest => dest.Id, opt => opt.Ignore());

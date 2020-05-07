@@ -1,0 +1,47 @@
+﻿@model BEProjectEllen.Core.ViewModels.UserManagerVM
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<h1>Users</h1>
+
+@*@foreach (var item in Model.Roles)
+    {
+        <div>@item.Name</div>
+        <div>@item.Id</div>
+    }*@
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">EMAIL</th>
+            <th scope="col">ROLE</th>
+            <th scope="col">CHANGE</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var user in Model.UserVMS)
+        {
+            <tr>
+                <td>@user.Email</td>
+
+                <td>
+                    @if (user.UserRoles.Count() > 0)
+                    {
+                        @foreach (var role in user.UserRoles)
+                        {
+                            <span>@role</span>
+                        }
+                    }
+                </td>
+                <td><a asp-action="AddRoleToUser" asp-route-userId="@user.Id">Add Role</a></td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>

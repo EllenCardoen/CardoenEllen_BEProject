@@ -22,11 +22,14 @@
 
                     @if (User.IsInRole("Administrator"))
                     {
-                    <ul class="navbar-nav flex-grow-1">
+                <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Quiz" asp-action="CreateQuiz">Create new quiz</a>
                         </li>
-                    </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="UserManagement" asp-action="Index">User management</a>
+                        </li>
+                </ul>
                     }
                 </div>
             </div>

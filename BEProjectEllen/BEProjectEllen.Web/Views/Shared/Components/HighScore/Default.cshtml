@@ -11,11 +11,11 @@
                 <div>
                     @{
                         if (list.Count > 1)
-                            list[1].User.Email.Split("@").First();
-
+                            @list[1].User.Email.Split("@")[0];
                     }
                 </div>
             </div>
+
             <div class="c-cup">
                 <img src="~/Images/gold-cup.png" class="c-cup__item c-cup__item--gold " />
                 <div>@list[0].User.Email.Split("@")[0]</div>
@@ -27,7 +27,7 @@
                 <div>
                     @{
                         if (list.Count > 2)
-                            list[2].User.Email.Split("@").First();
+                            @list[2].User.Email.Split("@")[0];
 
                     }
                 </div>

@@ -176,3 +176,4 @@ D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.W
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Desktop\School\Backend\CardoenEllen_BEProject\BEProjectEllen\BEProjectEllen.Web\obj\Debug\netcoreapp3.1\Razor\Views\UserManagement\Index.cshtml.g.cs
